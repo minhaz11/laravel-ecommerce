@@ -1,11 +1,11 @@
 @extends('adminDashboard.adminDashboard')
 @section('title')
-    Add Category
+    Update Category
 @endsection
 @section('mainPage')
 
 
-<form method="POST" action="{{route('storeCategory')}}">
+<form method="POST" action="{{route('updateCategory', ['cat_id'=>$edit->id])}}">
     @csrf
 <div class="container">
     <div class="row">
@@ -13,13 +13,13 @@
             <div class="form-group row">
                 <label for="" class="col-md-2 col-form-label">Name :</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="categoryName" placeholder="Category name...">
+                  <input type="text" class="form-control" name="categoryName" value="{{$edit->categoryName}}" placeholder="Category name...">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Description :</label>
                 <div class="col-sm-10">
-                 <textarea name="description" class="form-control" id="" cols="30" rows="10" placeholder="Put some description about this category..."></textarea>
+                <textarea name="description" class="form-control" id="" cols="30" rows="10" placeholder="Put some description about this category...">{{$edit->description}}</textarea>
                 </div>
               </div>
               <fieldset class="form-group">
@@ -27,41 +27,26 @@
                   <legend class="col-form-label col-sm-2 pt-0">Publication Status</legend>
                   <div class="col-sm-10">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="publication_status" id="gridRadios1" value="1" checked>
+                    <input class="form-check-input" type="radio" name="publication_status" id="gridRadios1" value="{{$edit->publication_status}}" {{$edit->publication_status == 1 ? 'checked' : ''}}>
                         <label class="form-check-label" for="gridRadios1">
                           Publish
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="publication_status" id="gridRadios2" value="0">
+                        <input class="form-check-input" type="radio" name="publication_status" id="gridRadios2" value="{{$edit->publication_status}}" {{$edit->publication_status == 1 ? '' : 'checked'}}>
                         <label class="form-check-label" for="gridRadios2">
                           Unpublish
                         </label>
                       </div>
-                    {{-- <div class="form-check disabled">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                      <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
-                      </label>
-                    </div> --}}
+
                   </div>
                 </div>
               </fieldset>
-              {{-- <div class="form-group row">
-                <div class="col-sm-2">Checkbox</div>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1">
-                      Example checkbox
-                    </label>
-                  </div>
-                </div>
-              </div> --}}
+
               <div class="form-group row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Add Category</button>
+                  <button type="submit" class="btn btn-primary">Update Category</button>
                 </div>
               </div>
         </div>

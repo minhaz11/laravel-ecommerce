@@ -38,48 +38,61 @@ class CategoryController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show()
     {
-        //
+        $categories = Category::paginate(10);
+        return view('adminDashboard.Category.categoryManage', ['categories'=> $categories ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $edit = Category::find($id);
+        return view('adminDashboard.Category.categoryUpdate', ['edit' => $edit]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $update = Category::find($id);
+        $request->validate([
+            'categoryName'=> 'required',
+            'description' => 'required',
+            'publication_status' => 'required'
+        ]);
+        $update->categoryName = $request->categoryName;
+        $update->description = $request->description;
+        $update->publication_status = $request->publication_status;
+        $update->save();
+
+        return back()->with('message', $update->categoryName . ' is successfully updated');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+       $cat = Category::find($id);
+       $cat->delete();
+        return back()->with('message', 'Your desired category is deleted successfully');
     }
+
+    public function publicationManage($id)
+    {
+        $message ="";
+       $publication =  Category::find($id);
+        if($publication->publication_status == 1){
+            $publication->publication_status = 0;
+            $publication->save();
+            $message = " is Unpublished successfully";
+        } else{
+            $publication->publication_status = 1;
+            $publication->save();
+            $message = " is Published successfully";
+
+        }
+        return back()->with('message', $publication->categoryName . $message);
+    }
+
 }
