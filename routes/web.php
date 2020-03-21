@@ -13,6 +13,21 @@ Route::get('/', "FrontendController@index") ;
   Route::get('category/edit/{id}', 'CategoryController@edit')->name('editCategory');
   Route::post('category/edit/{id}', 'CategoryController@update')->name('updateCategory');
 
+  //----Product Routes----//
+  Route::get('product/add', 'ProductController@create')->name('createProduct');
+
+  Route::post('product/add', 'ProductController@store')->name('storeProduct');
+
+  Route::get('product/manage', 'ProductController@show')->name('manageProduct');
+
+  Route::get('product/manage-publication/{id}', 'ProductController@publicationManage')->name('managePublication');
+
+  Route::get('product/delete/{id}', 'ProductController@destroy')->name('deleteProduct');
+
+  Route::get('product/edit/{id}', 'ProductController@edit')->name('editProduct');
+
+  Route::post('product/edit/{id}', 'ProductController@update')->name('updateProduct');
+
 
 
 
