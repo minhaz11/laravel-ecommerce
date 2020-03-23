@@ -5,7 +5,7 @@ Add Product
 @section('mainPage')
 
 
-<form method="POST" action="{{route('storeProduct')}}" name="productForm">
+<form method="POST" action="{{route('storeProduct')}}" name="productForm" enctype="multipart/form-data">
     @csrf
     <div class="container">
         <div class="row">
@@ -47,6 +47,12 @@ Add Product
                     <label for="" class="col-md-2 col-form-label">Price :</label>
                     <div class="col-md-10">
                     <input type="text" class="form-control" name="productPrice" value="{{old('productPrice')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-md-2 col-form-label">Product image :</label>
+                    <div class="col-md-10">
+                    <input type="file" class="form-control" name="productImage" value="{{old('productImage')}}">
                     </div>
                 </div>
                 <fieldset class="form-group">

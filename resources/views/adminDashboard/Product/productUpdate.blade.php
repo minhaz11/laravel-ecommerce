@@ -5,7 +5,7 @@ Update Product
 @section('mainPage')
 
 
-<form method="POST" action="{{route('updateProduct',['id'=> $pd->id])}}" name="productForm">
+<form method="POST" action="{{route('updateProduct',['id'=> $pd->id])}}" name="productForm" enctype="multipart/form-data">
     @csrf
     <div class="container">
         <div class="row">
@@ -50,20 +50,27 @@ Update Product
                         <input type="text" class="form-control" name="productPrice" value="{{$pd->Price}}">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="" class="col-md-2 col-form-label">Product image :</label>
+                    <div class="col-md-10">
+                        <img class="img-fluid img-thumbnail" style="width:150px; height:80px" src="{{asset('uploads')}}/product_image/{{$pd->productImage}}" alt="">
+                    <input type="file" class="form-control" name="productImage" value="{{$pd->productImage}}">
+                    </div>
+                </div>
                 <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-sm-2 pt-0">Publication Status</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="publication_status" id="gridRadios1"
-                                    value="1" {{$pd->publication_status == 1 ? '' : 'checked'}}>
+                                    value="1" {{$pd->publication_status == 1 ? 'checked' : ''}}>
                                 <label class="form-check-label" for="gridRadios1">
                                     Publish
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="publication_status" id="gridRadios2"
-                                    value="0">
+                                    value="0" {{$pd->publication_status == 1 ? '' : 'checked'}}>
                                 <label class="form-check-label" for="gridRadios2">
                                     Unpublish
                                 </label>

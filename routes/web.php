@@ -3,6 +3,7 @@
 
 Route::get('/', "FrontendController@index") ;
 
+
 //Admin Dashboard Routes
   //-----Category Routes----//
   Route::get('category/create', 'CategoryController@create')->name('createCategory');
@@ -27,6 +28,15 @@ Route::get('/', "FrontendController@index") ;
   Route::get('product/edit/{id}', 'ProductController@edit')->name('editProduct');
 
   Route::post('product/edit/{id}', 'ProductController@update')->name('updateProduct');
+
+  Route::get('product/trashed', 'ProductController@showTrashed')->name('trashedProduct');
+
+  Route::get('product/restore/{id}', 'ProductController@restore')->name('restoreProduct');
+
+  Route::get('product/force-delete/{id}', 'ProductController@forceDelete')->name('p_deleteProduct');
+
+  //---Front End category wised product view----//
+  Route::get('/categories/products/view/{$id}', 'FrontendController@productList')->name('cat_product');
 
 
 

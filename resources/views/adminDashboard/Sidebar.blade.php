@@ -51,6 +51,7 @@
           {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
         <a class="collapse-item" href="{{route('createProduct')}}">Add New Product</a>
         <a class="collapse-item" href="{{route('manageProduct')}}">Manage Product</a>
+        <a class="collapse-item" href="{{route('trashedProduct')}}">Trashed Product</a>
         </div>
       </div>
     </li>

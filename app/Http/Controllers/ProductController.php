@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -30,8 +31,14 @@ class ProductController extends Controller
             'shortDescription' => 'required',
             'longDescription' => 'required',
             'productPrice' => 'required|integer',
-            'publication_status'=> 'required'
+            'publication_status'=> 'required',
+            'productImage' => 'required'
         ]);
+
+        $fileName = $request->file('productImage')->getClientOriginalName();
+        if($request->hasFile('productImage')){
+            Image::make($request->file('productImage'))->save(public_path().'/uploads/product_image/'.$fileName);
+        }
 
         $product = new Product;
         $product->productName = $request->productName;
@@ -39,6 +46,7 @@ class ProductController extends Controller
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->longDescription;
         $product->Price = $request->productPrice;
+        $product->productImage =$fileName;
         $product->publication_status = $request->publication_status;
         $product->save();
         return back()->with('message', 'Product added successfully');
@@ -47,13 +55,11 @@ class ProductController extends Controller
 
     public function show()
     {
-        $category = Category::all();
-        $products = Product::paginate(10);
-        return view('adminDashboard.Product.manageProduct',
-        ['products'=> $products,
-         'category' => $category
 
-        ]);
+        $products = Product::paginate(10);
+
+        return view('adminDashboard.Product.manageProduct',
+        ['products'=> $products]);
     }
 
 
@@ -77,12 +83,18 @@ class ProductController extends Controller
             'publication_status'=> 'required'
         ]);
 
+        $fileName = $request->file('productImage')->getClientOriginalName();
+        if($request->hasFile('productImage')){
+            unlink(public_path().'/uploads/product_image/'.$product->productImage);
+            Image::make($request->file('productImage'))->save(public_path().'/uploads/product_image/'.$fileName);
+        }
 
         $product->productName = $request->productName;
         $product->cat_id = $request->category;
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->longDescription;
         $product->Price = $request->productPrice;
+        $product->productImage =$fileName;
         $product->publication_status = $request->publication_status;
         $product->save();
         return back()->with('message', 'Product Updated successfully');
@@ -92,10 +104,34 @@ class ProductController extends Controller
     {
         $pd = Product::find($id);
         $pd->delete();
-        return back()->with('message', 'Your desired Product is deleted successfully');
+        return back()->with('message', 'Your desired Product is trashed successfully');
     }
-   public function publicationManage($id){
-    $message ="";
+
+    public function showTrashed(){
+       $product = Product::onlyTrashed()->paginate(10);
+       return view('adminDashboard.Product.trashedProduct',['pd'=>$product]);
+    }
+
+    public function restore($id){
+         Product::withTrashed()
+         ->where('id', $id)
+         ->restore();
+          return back()->with('message', 'Your desired Product is restored successfully');
+     }
+
+     public function forceDelete($id){
+        $pd = new Product;
+
+        $pd->withTrashed()->where('id', $id)->forceDelete();
+        // unlink(public_path().'/uploads/product_image/'.$pd->productImage);
+
+
+         return back()->with('message', 'Your desired Product is deleted permanently');
+     }
+
+    public function publicationManage($id){
+
+        $message ="";
     $publication =  Product::find($id);
      if($publication->publication_status == 1){
          $publication->publication_status = 0;
@@ -109,5 +145,11 @@ class ProductController extends Controller
      }
      return back()->with('message', $publication->productName . $message);
  }
+ public function productList($id)
+    {
+        $product = Product::where('cat_id', $id)->get();
+        // $cat = Category::find($id);
+        return view('Frontend.product_list');
+    }
 
 }

@@ -71,7 +71,8 @@
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-					<img src="{{asset('Frontend')}}/images/icons/logo.png" alt="IMG-LOGO">
+                    {{-- <img src="{{asset('Frontend')}}/images/icons/logo.png" alt="IMG-LOGO"> --}}
+                    <h2 class="font-weight-bold text-uppercase">Ecommerce</h2>
 				</a>
 
 				<!-- Menu -->
@@ -379,10 +380,10 @@
 			</nav>
 		</div>
     </header>
-    
+
 
    @yield('content')
-   
+
     <!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 		<div class="flex-w p-b-90">

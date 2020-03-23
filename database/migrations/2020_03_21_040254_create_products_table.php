@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('productName');
-            $table->string('cat_id');
+            $table->string('cate_id');
             $table->text('shortDescription');
             $table->text('longDescription');
             $table->integer('Price');
@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('size')->nullable();
             $table->integer('manufacturerId')->nullable();
             $table->string('productImage')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,5 +37,6 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+
     }
 }
