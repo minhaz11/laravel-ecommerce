@@ -17,9 +17,10 @@
       <tr>
         <th scope="col">SN</th>
         <th scope="col">Product Name</th>
+        <th scope="col">Category Name</th>
         <th scope="col">Product Image</th>
         <th scope="col">Short Description</th>
-        <th scope="col">Category</th>
+
         <th scope="col">Price</th>
         <th scope="col">Publication Status</th>
         {{-- <th scope="col">Created at</th> --}}
@@ -31,9 +32,10 @@
         <tr>
         <td scope="row">{{$loop->index+1}}</td>
         <td >{{$product->productName}}</td>
+        <td>{{$product->category->categoryName}}</td>
         <td><img class="img-fluid img-thumbnail" style="width:150px; height:80px" src="{{asset('uploads')}}/product_image/{{$product->productImage}}" alt=""></td>
         <td>{{$product->shortDescription}}</td>
-        {{-- <td>{{$product->category()->categoryName}}</td> --}}
+
         <td>{{$product->Price}}</td>
         <td>{{$product->publication_status == 1 ? 'Published': 'Unpublished'}}</td>
         {{-- <td>{{$product->created_at}}</td> --}}
@@ -60,3 +62,5 @@
   <div class="text-center">{{ $products->links() }}</div>
 
 @endsection
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vitae voluptates suscipit dolores atque non voluptatum dolor quisquam earum quidem.

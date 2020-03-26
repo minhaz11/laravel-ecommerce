@@ -5,7 +5,7 @@ Add Category
 @section('mainPage')
 
 
-<form method="POST" action="{{route('storeCategory')}}">
+<form method="POST" action="{{route('storeCategory')}}" enctype="multipart/form-data">
     @csrf
     <div class="container">
         <div class="row">
@@ -21,6 +21,12 @@ Add Category
                     <div class="col-sm-10">
                         <textarea name="description" class="form-control" id="article-ckeditor" cols="30" rows="10"
                             placeholder="Put some description about this category..."></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-md-2 col-form-label">Category Image :</label>
+                    <div class="col-md-10">
+                        <input type="file" class="form-control" name="categoryImage" placeholder="Category image...">
                     </div>
                 </div>
                 <fieldset class="form-group">
@@ -41,26 +47,11 @@ Add Category
                                     Unpublish
                                 </label>
                             </div>
-                            {{-- <div class="form-check disabled">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                      <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
-                      </label>
-                    </div> --}}
+
                         </div>
                     </div>
                 </fieldset>
-                {{-- <div class="form-group row">
-                <div class="col-sm-2">Checkbox</div>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1">
-                      Example checkbox
-                    </label>
-                  </div>
-                </div>
-              </div> --}}
+
                 <div class="form-group row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">

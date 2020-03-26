@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Image;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        //
+       
     }
 
 
@@ -26,11 +27,18 @@ class CategoryController extends Controller
         $request->validate([
             'categoryName'=> 'required|unique:categories,categoryName',
             'description' => 'required',
+            'categoryImage' => 'required',
             'publication_status' => 'required'
         ]);
+        $fileName = $request->file('categoryImage')->getClientOriginalName();
+        if($request->hasFile('categoryImage')){
+            Image::make($request->file('categoryImage'))->save(public_path().'/uploads/category_image/'.$fileName);
+        }
+
         $category =new Category;
        $category->categoryName = $request->categoryName;
        $category->description = $request->description;
+       $category->categoryImage = $fileName;
        $category->publication_status = $request->publication_status;
        $category->save();
 
@@ -59,10 +67,17 @@ class CategoryController extends Controller
         $request->validate([
             'categoryName'=> 'required',
             'description' => 'required',
+            'categoryImage' => 'required',
             'publication_status' => 'required'
         ]);
+        $fileName = $request->file('categoryImage')->getClientOriginalName();
+        if($request->hasFile('categoryImage')){
+            unlink(public_path().'/uploads/category_image/'.$update->categoryImage);
+            Image::make($request->file('categoryImage'))->save(public_path().'/uploads/category_image/'.$fileName);
+        }
         $update->categoryName = $request->categoryName;
         $update->description = $request->description;
+        $update->categoryImage = $fileName;
         $update->publication_status = $request->publication_status;
         $update->save();
 

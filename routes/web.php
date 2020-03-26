@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/', "FrontendController@index") ;
+Route::get('/', "FrontendController@index")->name('index') ;
 
 
 //Admin Dashboard Routes
@@ -36,7 +36,8 @@ Route::get('/', "FrontendController@index") ;
   Route::get('product/force-delete/{id}', 'ProductController@forceDelete')->name('p_deleteProduct');
 
   //---Front End category wised product view----//
-  Route::get('/categories/products/view/{$id}', 'FrontendController@productList')->name('cat_product');
+  Route::get('/categories/products/view/{id}', 'FrontendController@productList')->name('cat_product');
+  Route::get('product/details/{id}', 'FrontendController@productDetails')->name('productDetails');
 
 
 

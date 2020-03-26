@@ -56,23 +56,23 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+                        minhaz217@gmail.com
 					</span>
 
-					<div class="topbar-language rs1-select2">
+					{{-- <div class="topbar-language rs1-select2">
 						<select class="selection-1" name="time">
 							<option>USD</option>
 							<option>EUR</option>
 						</select>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-                    {{-- <img src="{{asset('Frontend')}}/images/icons/logo.png" alt="IMG-LOGO"> --}}
-                    <h2 class="font-weight-bold text-uppercase">Ecommerce</h2>
+                    <img src="{{asset('Frontend')}}/images/icons/logo.png" alt="IMG-LOGO">
+                    <p class="font-weight-bold text-uppercase"><small>Amazing footwears</small></p>
 				</a>
 
 				<!-- Menu -->
@@ -80,20 +80,26 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub_menu">
+								<a href="{{route('index')}}">Home</a>
+								{{-- <ul class="sub_menu">
 									<li><a href="index.html">Homepage V1</a></li>
 									<li><a href="home-02.html">Homepage V2</a></li>
 									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
+								</ul> --}}
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+                                <a href="product.html">Shop</a>
+
 							</li>
 
 							<li class="sale-noti">
-								<a href="product.html">Sale</a>
+                                <a href="">Categories</a>
+                                <ul class="sub_menu">
+									<li><a href="">Homepage V1</a></li>
+									<li><a href="">Homepage V2</a></li>
+									<li><a href="home-03.html">Homepage V3</a></li>
+								</ul>
 							</li>
 
 							<li>

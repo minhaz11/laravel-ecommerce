@@ -7,13 +7,13 @@
 @section('content')
 
 
-<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" >
-    <h2 class="l-text2 t-center">
-        {{-- {{$category->categoryName}} --}}
+<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image:url('{{asset('Frontend')}}/images/4.jpg');" >
+    <h2 class="l-text2 t-center text-dark">
+        {{$catName->categoryName}}
     </h2>
     <p class="m-text13 t-center">
-        New Arrivals Women Collection 2018
-    </p>
+        {{-- New Arrivals Women Collection 2018
+    </p> --}}
 </section>
 
 
@@ -29,39 +29,24 @@
                     </h4>
 
                     <ul class="p-b-54">
+                        {{-- <li class="p-t-4">
+                            <a href="{{route('cat_product',['id'=> $category->id])}}" class="s-text13 active1">
+                               All
+                            </a>
+                        </li> --}}
+                        @foreach ($category as $item)
                         <li class="p-t-4">
-                            <a href="#" class="s-text13 active1">
-                                All
+                            <a href="{{route('cat_product',['id'=> $item->id])}}" class="s-text13 active1">
+                                {{$item->categoryName}}
                             </a>
                         </li>
+                        @endforeach
 
-                        <li class="p-t-4">
-                            <a href="#" class="s-text13">
-                                Women
-                            </a>
-                        </li>
 
-                        <li class="p-t-4">
-                            <a href="#" class="s-text13">
-                                Men
-                            </a>
-                        </li>
-
-                        <li class="p-t-4">
-                            <a href="#" class="s-text13">
-                                Kids
-                            </a>
-                        </li>
-
-                        <li class="p-t-4">
-                            <a href="#" class="s-text13">
-                                Accesories
-                            </a>
-                        </li>
                     </ul>
 
                     <!--  -->
-                    <h4 class="m-text14 p-b-32">
+                    {{-- <h4 class="m-text14 p-b-32">
                         Filters
                     </h4>
 
@@ -129,22 +114,16 @@
                                 <label class="color-filter color-filter7" for="color-filter7"></label>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
-                    <div class="search-product pos-relative bo4 of-hidden">
-                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
 
-                        <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                 <!--  -->
                 <div class="flex-sb-m flex-w p-b-35">
-                    <div class="flex-w">
+                    {{-- <div class="flex-w">
                         <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                             <select class="selection-2" name="sorting">
                                 <option>Default Sorting</option>
@@ -165,20 +144,28 @@
 
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <span class="s-text8 p-t-5 p-b-5">
-                        Showing 1–12 of 16 results
+                        Showing results of {{$catName->categoryName}} category....
                     </span>
+                    <div class="search-product pos-relative bo4 of-hidden">
+                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+
+                        <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Product -->
                 <div class="row">
+                    @foreach ($product as $pd)
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                                <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+                            <img src="{{asset('uploads/product_image')}}/{{$pd->productImage}}" alt="IMG-PRODUCT" >
 
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -196,22 +183,24 @@
                             </div>
 
                             <div class="block2-txt p-t-20">
-                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                    Herschel supply co 25l
+                                <a href="{{route('productDetails', ['id'=>$pd->id])}}" class="block2-name dis-block s-text3 p-b-5" style="text-transform:uppercase">
+                                    {{$pd->productName}}
                                 </a>
 
                                 <span class="block2-price m-text6 p-r-5">
-                                    $75.00
+                                    ${{$pd->Price}}
                                 </span>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
+                    {{-- @foreach ($allProduct as $all)
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+                                <img src="{{asset('uploads/product_image')}}/{{$all->productImage}}" alt="IMG-PRODUCT">
 
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -239,6 +228,8 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach --}}
+                    {{--
 
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
@@ -576,13 +567,14 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Pagination -->
                 <div class="pagination flex-m flex-w p-t-26">
-                    <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                    <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+                    {{-- <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
+                    <a href="#" class="item-pagination flex-c-m trans-0-4">2</a> --}}
+                    {{ $product->links() }}
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@ class ProductController extends Controller
 
         $product = new Product;
         $product->productName = $request->productName;
-        $product->cat_id = $request->category;
+        $product->cate_id = $request->category;
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->longDescription;
         $product->Price = $request->productPrice;
@@ -90,7 +90,7 @@ class ProductController extends Controller
         }
 
         $product->productName = $request->productName;
-        $product->cat_id = $request->category;
+        $product->cate_id = $request->category;
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->longDescription;
         $product->Price = $request->productPrice;
@@ -145,11 +145,6 @@ class ProductController extends Controller
      }
      return back()->with('message', $publication->productName . $message);
  }
- public function productList($id)
-    {
-        $product = Product::where('cat_id', $id)->get();
-        // $cat = Category::find($id);
-        return view('Frontend.product_list');
-    }
+
 
 }
