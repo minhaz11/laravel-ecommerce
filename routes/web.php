@@ -39,6 +39,8 @@ Route::get('/', "FrontendController@index")->name('index') ;
   Route::get('/categories/products/view/{id}', 'FrontendController@productList')->name('cat_product');
   Route::get('product/details/{id}', 'FrontendController@productDetails')->name('productDetails');
 
+  //---Cart route---//
+    Route::post('product/add/cart','CartController@addToCart')->name('add_to_cart');
 
 
 

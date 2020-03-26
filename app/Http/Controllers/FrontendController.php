@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    function index(){
+    function index()
+    {
         $product = Product::where('publication_status',1)->orderBy('id','desc')->take(10)->get();
         $categories = Category::where('publication_status',1)->get();
         return view('Frontend.indexContent', compact('product','categories'));
