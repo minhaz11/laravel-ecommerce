@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{asset('Frontend')}}/{{asset('Frontend')}}/images/icons/favicon.png"/>
+    <link rel="icon" type="image/png" href="{{asset('Frontend')}}/{{asset('Frontend')}}/images/icons/favicon.png"/>
+    <link href="{{asset('adminFrontend')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('Frontend')}}/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -131,7 +132,7 @@
 
 					<div class="header-wrapicon2">
 						<img src="{{asset('Frontend')}}/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+						<span class="header-icons-noti">{{$getTotalQuantity}}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown" >
@@ -143,12 +144,13 @@
 									</div>
 
 									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
+										<p  class="header-cart-item-name">
 											{{$item->name}}
-										</a>
+                                        </p>
 
 										<span class="header-cart-item-info">
-											${{$item->price}}
+                                            ${{$item->price}}
+                                        <p><small>Quan: {{$item->quantity}}</small></p>
 										</span>
                                     </div>
 
@@ -158,21 +160,26 @@
 							</ul>
 
 							<div class="header-cart-total">
-								Total: $75.00
+                                @if ($getSubTotal==0)
+                                    No items in cart
+                                @else
+                                Total: ${{$getSubTotal}}
+                                @endif
+
 							</div>
 
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="{{route('viewCart')}}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
+                                <a href="{{route('clearCart')}}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										Clear Cart
 									</a>
 								</div>
 							</div>

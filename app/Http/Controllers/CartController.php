@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request)
+    public function addToCart(Request $request, $id)
     {
-        // return $request->all();
-        $product =Product::find($request->product_id);
+
+        $product =Product::find($id);
 
         Cart::add([
             'id' => $product->id,
@@ -22,6 +22,30 @@ class CartController extends Controller
                 'productImage'=>$product->productImage
             ]
         ]);
+
+        return back();
+    }
+
+    public function viewCart()
+    {
+        return view('Frontend.viewCart_details');
+    }
+
+    public function removeCartItem($id)
+    {
+        Cart::remove($id);
+        return back();
+    }
+
+    public function updateCartItem(Request $request,$id)
+    {
+
+        Cart::update($id,[
+            'quantity' => [
+                'relative' => false,
+                'value' =>$request->quantity
+            ],
+          ]);
 
         return back();
     }

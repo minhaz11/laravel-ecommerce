@@ -105,7 +105,7 @@
 
                 <div class="flex-r-m flex-w p-t-10">
                     <div class="w-size16 flex-m flex-w">
-                    <form action="{{route('add_to_cart')}}" method="POST">
+                    <form action="{{route('add_to_cart',['id'=>$product->id])}}" method="POST">
                         @csrf
                         <div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
                             <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
@@ -119,7 +119,7 @@
                                 <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
                             </button>
                         </div>
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
+
 
                         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                             <!-- Button -->
@@ -211,10 +211,13 @@
                                 </a>
 
                                 <div class="block2-btn-addcart w-size1 trans-0-4">
-                                    <!-- Button -->
-                                    <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                        Add to Cart
-                                    </button>
+                                    <form action="{{route('add_to_cart',['id'=>$item->id])}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_quantity" value="1">
+                                        <button type="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('*', function ($view) {
             $view->with('getCartContents', Cart::getContent());
+            $view->with('getTotalQuantity', Cart::getTotalQuantity());
+            $view->with('getSubTotal', Cart::getSubTotal());
         });
     }
 }
