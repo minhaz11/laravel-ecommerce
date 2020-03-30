@@ -44,11 +44,18 @@ Route::get('/', "FrontendController@index")->name('index') ;
     Route::get('product/view/cart','CartController@viewCart')->name('viewCart');
     Route::get('product/remove/cart/{id}','CartController@removeCartItem')->name('removeCartItem');
     Route::post('product/update/cart/{id}','CartController@updateCartItem')->name('updateCartItem');
-
     Route::get('product/clear/cart', function () {
         Cart::clear();
         return back();
     })->name('clearCart');
+
+    //---customer signUp---//
+    Route::get('customer/sign-up','CustomerController@index')->name('signUp');
+    Route::post('customer/signed-up','CustomerController@store')->name('store');
+
+
+
+
 
 
 

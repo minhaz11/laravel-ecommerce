@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{asset('Frontend')}}/{{asset('Frontend')}}/images/icons/favicon.png"/>
+    <link rel="icon" type="image/png" href="{{asset('Frontend')}}/images/icons/favicon.png"/>
     <link href="{{asset('adminFrontend')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('Frontend')}}/vendor/bootstrap/css/bootstrap.min.css">
@@ -35,6 +35,27 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('Frontend')}}/css/util.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('Frontend')}}/css/main.css">
 <!--===============================================================================================-->
+
+<!--sign up customer-->
+ <!-- Icons font CSS-->
+ <link href="{{asset('customer')}}/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+ <link href="{{asset('customer')}}/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+ <!-- Font special for pages-->
+ <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+ <!-- Vendor CSS-->
+ <link href="{{asset('customer')}}/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+ <link href="{{asset('customer')}}/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+ <!-- Main CSS-->
+ <link href="{{asset('customer')}}/css/main.css" rel="stylesheet" media="all">
+{{-- <link rel="stylesheet" href="{{asset('customer')}}/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="{{asset('customer')}}/css/style.css"> --}}
+
+
+
 </head>
 <body class="animsition">
 
@@ -592,7 +613,23 @@
 	</script>
 
 <!--===============================================================================================-->
-	<script src="{{asset('Frontend')}}/js/main.js"></script>
+    <script src="{{asset('Frontend')}}/js/main.js"></script>
+
+    <!---====sign up customer--->
+    <!-- Jquery JS-->
+    <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="{{asset('customer')}}/vendor/select2/select2.min.js"></script>
+    <script src="{{asset('customer')}}/vendor/datepicker/moment.min.js"></script>
+    <script src="{{asset('customer')}}/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="{{asset('customer')}}/js/global.js"></script>
+    {{-- <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
+    <script src="{{asset('customer')}}/js/main.js"></script> --}}
+
+
+
 
 </body>
 </html>

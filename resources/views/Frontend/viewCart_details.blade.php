@@ -90,7 +90,7 @@
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm m-b-30">
 				<div class="flex-w flex-m w-full-sm">
 					<div class="size11 bo4 m-r-10">
 						<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
@@ -112,7 +112,14 @@
 				</div>
 			</div>
 
-			<!-- Total -->
+            <div class="size15 trans-0-4 text-center">
+                <!-- Button -->
+            <a href="{{route('signUp')}}" class="flex-c-m  bg1 bo-rad-23 hov1 s-text1 trans-0-4 " style="width:50%;height:100%; margin:auto">
+                    Proceed to Checkout
+                </a>
+            </div>
+
+            {{-- <!-- Total -->
 			<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 				<h5 class="m-text20 p-b-24">
 					Cart Totals
@@ -187,7 +194,7 @@
 						Proceed to Checkout
 					</button>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</section>
 @endsection
