@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\customerMailNotification;
 
 class CustomerController extends Controller
 {
@@ -29,6 +31,7 @@ class CustomerController extends Controller
         $customer->password = $request->pwd;
         $customer->address = $request->address;
         $customer->save();
+        Mail::to($customer->email)->send(new customerMailNotification($customer));
         return back();
     }
 }
