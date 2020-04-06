@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
-use Illuminate\Http\Request;
 use Mail;
+use Session;
+use App\Customer;
+use App\Shipping;
+use Illuminate\Http\Request;
 use App\Mail\customerMailNotification;
 
 class CustomerController extends Controller
@@ -31,7 +33,31 @@ class CustomerController extends Controller
         $customer->password = $request->pwd;
         $customer->address = $request->address;
         $customer->save();
-        Mail::to($customer->email)->send(new customerMailNotification($customer));
-        return back();
+        Session::put(['id'=> $customer->id]);
+        // Mail::to($customer->email)->send(new customerMailNotification($customer));
+         return redirect()->route('shippingInfo');
+    }
+
+    public function shippingInfo()
+    {
+        $customer = Customer::find(Session::get('id'));
+        return view('Frontend.shippingInfo',['customer'=>$customer]);
+    }
+    public function storeShippingInfo(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'Address'=>'required'
+        ]);
+        $shipping = new Shipping;
+        $shipping->name = $request->name;
+        $shipping->email = $request->email;
+        $shipping->phone = $request->phone;
+        $shipping->address = $request->Address;
+        $shipping->save();
+        return view('Frontend.payment');
+
     }
 }

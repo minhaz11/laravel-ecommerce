@@ -53,6 +53,16 @@ Route::get('/', "FrontendController@index")->name('index') ;
     Route::get('customer/sign-up','CustomerController@index')->name('signUp');
     Route::post('customer/signed-up','CustomerController@store')->name('store');
 
+    //shipping info----//
+    Route::get('customer/shipping-info','CustomerController@shippingInfo')->name('shippingInfo');
+    Route::post('customer/shipping-info-store','CustomerController@storeShippingInfo')->name('storeShippingInfo');
+
+    //paypal
+    Route::get('payment', 'PaymentController@index');
+    Route::post('charge', 'PaymentController@charge')->name('charge');
+    Route::get('paymentsuccess', 'PaymentController@payment_success');
+    Route::get('paymenterror', 'PaymentController@payment_error');
+
 
 
 
