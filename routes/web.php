@@ -58,11 +58,9 @@ Route::get('/', "FrontendController@index")->name('index') ;
     Route::post('customer/shipping-info-store','CustomerController@storeShippingInfo')->name('storeShippingInfo');
 
     //paypal
-    Route::get('payment', 'PaymentController@index');
-    Route::post('charge', 'PaymentController@charge')->name('charge');
-    Route::get('paymentsuccess', 'PaymentController@payment_success');
-    Route::get('paymenterror', 'PaymentController@payment_error');
-
+    Route::get('payment', 'PaymentController@payment')->name('payment');
+    Route::get('cancel', 'PaymentController@cancel')->name('payment.cancel');
+    Route::get('payment/success', 'PaymentController@success')->name('payment.success');
 
 
 
