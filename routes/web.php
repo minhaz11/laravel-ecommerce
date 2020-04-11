@@ -62,6 +62,11 @@ Route::get('/', "FrontendController@index")->name('index') ;
     Route::get('cancel', 'PaymentController@cancel')->name('payment.cancel');
     Route::get('payment/success', 'PaymentController@success')->name('payment.success');
 
+    //logout customer
+    Route::get('/logout/customer', 'CustomerController@logout')->name('logout_customer');
+    Route::post('/login/customer', 'CustomerController@login')->name('login_customer');
+
+
 
 
 

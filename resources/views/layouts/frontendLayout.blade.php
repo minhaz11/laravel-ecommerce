@@ -37,7 +37,7 @@
 <!--===============================================================================================-->
 
 <!--sign up customer-->
- <!-- Icons font CSS-->
+ {{-- <!-- Icons font CSS-->
  <link href="{{asset('customer')}}/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
  <link href="{{asset('customer')}}/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
  <!-- Font special for pages-->
@@ -48,11 +48,14 @@
  <link href="{{asset('customer')}}/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
  <!-- Main CSS-->
- <link href="{{asset('customer')}}/css/main.css" rel="stylesheet" media="all">
+ <link href="{{asset('customer')}}/css/main.css" rel="stylesheet" media="all"> --}}
 {{-- <link rel="stylesheet" href="{{asset('customer')}}/fonts/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
 <link rel="stylesheet" href="{{asset('customer')}}/css/style.css"> --}}
+
+{{-- <link href="{{asset('customer')}}/form.css" rel="stylesheet"> --}}
+
 
 
 
@@ -145,9 +148,16 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="{{asset('Frontend')}}/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-					</a>
+                    @if (Session::get('customer_id'))
+                        <a href="{{route('logout_customer')}}" class="header-wrapicon1 dis-block">
+                            Logout
+                        </a>
+                    @else
+                       <a href="{{route('signUp')}}" class="header-wrapicon1 dis-block">
+                            Login
+                        </a>
+                    @endif
+
 
 					<span class="linedivide1"></span>
 
@@ -616,15 +626,16 @@
     <script src="{{asset('Frontend')}}/js/main.js"></script>
 
     <!---====sign up customer--->
+    <script src="{{asset('customer')}}/form.js"></script>
     <!-- Jquery JS-->
-    <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
+    {{-- <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
     <script src="{{asset('customer')}}/vendor/select2/select2.min.js"></script>
     <script src="{{asset('customer')}}/vendor/datepicker/moment.min.js"></script>
     <script src="{{asset('customer')}}/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
-    <script src="{{asset('customer')}}/js/global.js"></script>
+    <script src="{{asset('customer')}}/js/global.js"></script> --}}
     {{-- <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
     <script src="{{asset('customer')}}/js/main.js"></script> --}}
 
