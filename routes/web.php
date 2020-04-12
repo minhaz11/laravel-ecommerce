@@ -56,25 +56,21 @@ Route::get('/', "FrontendController@index")->name('index') ;
     //shipping info----//
     Route::get('customer/shipping-info','CustomerController@shippingInfo')->name('shippingInfo');
     Route::post('customer/shipping-info-store','CustomerController@storeShippingInfo')->name('storeShippingInfo');
+    Route::get('customer/shipping-confirm','CustomerController@confirmShipping')->name('confirmShipping');
 
     //paypal
     Route::get('payment', 'PaymentController@payment')->name('payment');
     Route::get('cancel', 'PaymentController@cancel')->name('payment.cancel');
     Route::get('payment/success', 'PaymentController@success')->name('payment.success');
 
+    //order
+    Route::post('order/saved','CustomerController@saveOrder')->name('saveOrder');
+
     //logout customer
     Route::get('/logout/customer', 'CustomerController@logout')->name('logout_customer');
     Route::post('/login/customer', 'CustomerController@login')->name('login_customer');
 
 
-
-
-
-
-
-
-
-
   Auth::routes();
 
-Route::get('/admin-dashboard', 'HomeController@index')->name('home');
+  Route::get('/admin-dashboard', 'HomeController@index')->name('home');

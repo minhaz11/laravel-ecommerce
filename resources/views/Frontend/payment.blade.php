@@ -37,12 +37,20 @@
 
         <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm m-b-30">
             <div class="flex-w flex-m w-full-sm">
+        <form action="{{route('saveOrder')}}" method="POST">
+            @csrf
             <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-                <a href="{{ route('payment') }}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Pay with Paypal</a>
+               <input type="radio"  name="payment_type" id="cash" value="cash" checked>
+               <label for="cash">Cash on Delivery</label>
             </div>
             <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-                <a href="" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Cash On Delivery</a>
+                <input type="radio"  name="payment_type" id="paypal" value="paypal">
+               <label for="paypal">Paypal</label>
             </div>
+            <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+                <button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Procced</button>
+            </div>
+        </form>
 
             </div>
 

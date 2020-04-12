@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('getCartContents', Cart::getContent());
             $view->with('getTotalQuantity', Cart::getTotalQuantity());
             $view->with('getSubTotal', Cart::getSubTotal());
+            $view->with('isEmpty', Cart::isEmpty());
         });
     }
 }

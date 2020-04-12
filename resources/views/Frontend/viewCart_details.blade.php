@@ -114,7 +114,7 @@
 
             <div class="size15 trans-0-4 text-center">
                 <!-- Button -->
-            <a href="{{route('signUp')}}" class="flex-c-m  bg1 bo-rad-23 hov1 s-text1 trans-0-4 " style="width:50%;height:100%; margin:auto">
+            <a href="{{route('confirmShipping')}}" class="flex-c-m  bg1 bo-rad-23 hov1 s-text1 trans-0-4 " style="width:50%;height:100%; margin:auto">
                     Proceed to Checkout
                 </a>
             </div>
