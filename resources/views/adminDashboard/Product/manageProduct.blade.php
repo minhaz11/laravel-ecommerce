@@ -11,8 +11,10 @@
     </button>
   </div>
 @endif
-
-<table class="table table-bordered table-hover table-responsive">
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+<table class="table table-bordered table-hover table-responsive" id="dataTable" width="100%" cellspacing="0">
     <thead class="thead-dark">
       <tr>
         <th scope="col">SN</th>
@@ -41,6 +43,7 @@
         {{-- <td>{{$product->created_at}}</td> --}}
 
             <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="{{route('editProduct', ['pd_id'=>$product->id])}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i></a>
                 <a href="{{route('deleteProduct', ['pd_id'=>$product->id])}}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                 <a href="{{route('managePublication', ['pd_id'=>$product->id])}}" class="btn btn-outline-primary btn-sm">
@@ -49,7 +52,7 @@
                     @else
                     <i class="fas fa-eye"></i>
                     @endif
-
+                </div>
 
             </td>
 
@@ -60,7 +63,10 @@
     </tbody>
   </table>
   <div class="text-center">{{ $products->links() }}</div>
+        </div>
+    </div>
+</div>
 
-@endsection
+  @endsection
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vitae voluptates suscipit dolores atque non voluptatum dolor quisquam earum quidem.
+

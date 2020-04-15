@@ -11,8 +11,11 @@
     </button>
   </div>
 @endif
-<table class="table table-striped">
-    <thead>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+<table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">SN</th>
         <th scope="col">Category Name</th>
@@ -32,9 +35,17 @@
         <td>{{$category->created_at}}</td>
 
             <td>
-                <a href="{{route('editCategory', ['cat_id'=>$category->id])}}" class="btn btn-outline-warning">Edit</a>
-                <a href="{{route('deleteCategory', ['cat_id'=>$category->id])}}" class="btn btn-outline-danger">Delete</a>
-                <a href="{{route('publicationManage', ['cat_id'=>$category->id])}}" class="btn btn-outline-primary">{{$category->publication_status == 1 ? 'Unpublish' : 'Publish'}}</a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="{{route('editCategory', ['cat_id'=>$category->id])}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+                <a href="{{route('deleteCategory', ['cat_id'=>$category->id])}}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                 <a href="{{route('publicationManage', ['cat_id'=>$category->id])}}" class="btn btn-outline-primary">
+                    @if ($category->publication_status == 1)
+                    <i class="fas fa-eye-slash"></i></a>
+                    @else
+                    <i class="fas fa-eye"></i>
+                    @endif
+                </a>
+                </div>
             </td>
 
           </tr>
@@ -44,5 +55,7 @@
     </tbody>
   </table>
   <div class="text-center">{{ $categories->links() }}</div>
-
+        </div>
+    </div>
+</div>
 @endsection

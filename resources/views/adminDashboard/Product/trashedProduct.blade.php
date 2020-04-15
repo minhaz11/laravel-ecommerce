@@ -11,7 +11,10 @@
     </button>
   </div>
 @endif
-<table class="table table-bordered table-hover table-responsive">
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+<table class="table table-bordered table-hover table-responsive" id="dataTable" width="100%" cellspacing="0">
     <thead class="thead-dark">
       <tr>
         <th scope="col">SN</th>
@@ -50,5 +53,11 @@
     </tbody>
   </table>
   <div class="text-center">{{ $pd->links() }}</div>
+        </div>
+    </div>
+</div>
 
-@endsection
+
+
+  @endsection
+

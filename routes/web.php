@@ -35,6 +35,10 @@ Route::get('/', "FrontendController@index")->name('index') ;
 
   Route::get('product/force-delete/{id}', 'ProductController@forceDelete')->name('p_deleteProduct');
 
+  //order manage
+  Route::get('order/manage', 'OrderController@index')->name('manageOrder');
+  Route::get('order/details/{id}', 'OrderController@orderDetails')->name('orderDetails');
+
   //---Front End category wised product view----//
   Route::get('/categories/products/view/{id}', 'FrontendController@productList')->name('cat_product');
   Route::get('product/details/{id}', 'FrontendController@productDetails')->name('productDetails');
