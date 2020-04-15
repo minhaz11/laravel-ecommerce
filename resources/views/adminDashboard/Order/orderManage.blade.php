@@ -28,12 +28,12 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($orders as $order)
+        @foreach ($orders as $key => $order)
         <tr>
-        <td scope="row">{{$loop->index+1}}</td>
+        <td scope="row">{{$orders->firstItem()+$key}}</td>
         <td >{{$order->customers->name.' '.$order->customers->last_name}}</td>
         <td>{{$order->total_price}}</td>
-        <td>{{$order->created_at}}</td>
+        <td>{{\Carbon\Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
         <td>{{$order->payment_type}}</td>
         <td>{{$order->payment_status}}</td>
         <td>{{$order->order_status}}</td>
@@ -58,7 +58,7 @@
 
     </tbody>
   </table>
-  {{-- <div class="text-center">{{ $products->links() }}</div> --}}
+  <div class="text-center">{{ $orders->links() }}</div>
         </div>
         </div>
 </div>

@@ -30,9 +30,9 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
+        @foreach ($products as $key => $product )
         <tr>
-        <td scope="row">{{$loop->index+1}}</td>
+        <td scope="row">{{$products->firstItem() + $key }}</td>
         <td >{{$product->productName}}</td>
         <td>{{$product->category->categoryName}}</td>
         <td><img class="img-fluid img-thumbnail" style="width:150px; height:80px" src="{{asset('uploads')}}/product_image/{{$product->productImage}}" alt=""></td>

@@ -12,7 +12,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $order = Order::all();
+        $order = Order::paginate(15);
         return view('adminDashboard.Order.orderManage',['orders'=>$order]);
     }
 

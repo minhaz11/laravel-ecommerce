@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <th>Order Date</th>
-                        <td>{{ $orderDetails->created_at}}</td>
+                        <td>{{\Carbon\Carbon::parse($orderDetails->created_at)->format('d/m/Y')}}</td>
                     </tr>
                 </table><hr>
 
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <th>Registered date</th>
-                        <td>{{$orderDetails->customers->created_at}}</td>
+                        <td>{{\Carbon\Carbon::parse($orderDetails->customers->created_at)->format('d/m/Y')}}</td>
                     </tr>
                 </table><hr>
                 <h1 class="text-center text-info mt-5">Shipping Info for this Order</h1>
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <th>Shipping date date</th>
-                            <td>{{$orderDetails->shipping->created_at}}</td>
+                            <td>{{\Carbon\Carbon::parse($orderDetails->shipping->created_at)->format('d/m/Y')}}</td>
                         </tr>
                     </tr>
                 </table>
