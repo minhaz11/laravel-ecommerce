@@ -6,6 +6,7 @@ use App\Order;
 use App\anageOrder;
 use App\Order_details;
 use Illuminate\Http\Request;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -25,32 +26,23 @@ class OrderController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function seeInvoice($id)
     {
-
+        $orderDetails = Order::find($id);
+        $productInfo = Order_details::where('order_id',$orderDetails->id)->get();
+        return view('adminDashboard.Order.seeInvoice' ,['orderDetails'=>$orderDetails,'productInfo'=>$productInfo]);
     }
 
 
-    public function show(anageOrder $anageOrder)
+    public function downloadInvoice($id)
     {
-        //
+        $orderDetails = Order::find($id);
+        $productInfo = Order_details::where('order_id',$orderDetails->id)->get();
+
+        $pdf = PDF::loadView('adminDashboard.Order.dwnInvoice',compact('orderDetails','productInfo'));
+
+        return $pdf->download($orderDetails->customers->name.' '.$orderDetails->customers->last_name.'_bill_invoice.pdf');
     }
 
 
-    public function edit(anageOrder $anageOrder)
-    {
-        //
-    }
-
-
-    public function update(Request $request, anageOrder $anageOrder)
-    {
-        //
-    }
-
-
-    public function destroy(anageOrder $anageOrder)
-    {
-        //
-    }
 }

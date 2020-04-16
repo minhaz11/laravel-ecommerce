@@ -95,7 +95,7 @@
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="{{route('index')}}" class="logo">
                     <img src="{{asset('Frontend')}}/images/icons/logo.png" alt="IMG-LOGO">
                     <p class="font-weight-bold text-uppercase"><small>Amazing footwears</small></p>
 				</a>

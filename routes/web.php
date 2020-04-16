@@ -39,6 +39,10 @@ Route::get('/', "FrontendController@index")->name('index') ;
   Route::get('order/manage', 'OrderController@index')->name('manageOrder');
   Route::get('order/details/{id}', 'OrderController@orderDetails')->name('orderDetails');
 
+  //Invoice
+  Route::get('invoice/details/{id}', 'OrderController@seeInvoice')->name('seeInvoice');
+  Route::get('invoice/download/{id}', 'OrderController@downloadInvoice')->name('downloadInvoice');
+
   //---Front End category wised product view----//
   Route::get('/categories/products/view/{id}', 'FrontendController@productList')->name('cat_product');
   Route::get('product/details/{id}', 'FrontendController@productDetails')->name('productDetails');

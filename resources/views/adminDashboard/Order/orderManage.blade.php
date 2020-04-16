@@ -40,14 +40,12 @@
 
             <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <a title="Order details" href="{{route('orderDetails', ['id'=>$order->id])}}" class="btn btn-outline-info btn-sm"><i class="fas fa-info"></i></a>
-                {{-- <a href="{{route('deleteProduct', ['pd_id'=>$product->id])}}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                <a href="{{route('managePublication', ['pd_id'=>$product->id])}}" class="btn btn-outline-primary btn-sm">
-                    @if ($product->publication_status == 1)
-                    <i class="fas fa-eye-slash"></i></a>
-                    @else
-                    <i class="fas fa-eye"></i>
-                    @endif --}}
+                <a title="Order details" target="_blank" href="{{route('orderDetails', ['id'=>$order->id])}}" class="btn btn-outline-info btn-sm"><i class="fas fa-info"></i></a>
+
+                <a title="See Invoice" target="_blank" href="{{route('seeInvoice', ['id'=>$order->id])}}" class="btn btn-outline-primary btn-sm"><i class="fas fa-file-alt"></i></a>
+
+                <a title="Download Invoice" href="{{route('downloadInvoice', ['id'=>$order->id])}}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-file-download"></i></a>
+
 
                 </div>
             </td>

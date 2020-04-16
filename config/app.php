@@ -178,7 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class
 
 
     ],
@@ -233,7 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-        'PayPal' => Srmklive\PayPal\Facades\PayPal::class
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
 
     ],
 
