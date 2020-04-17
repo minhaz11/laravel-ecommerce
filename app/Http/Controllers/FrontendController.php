@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Product;
+use App\Category;
+use App\SlideShow;
+use App\FeaturedProduct;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     function index()
     {
-        $product = Product::where('publication_status',1)->orderBy('id','desc')->take(10)->get();
+        // $product = Product::where('publication_status',1)->orderBy('id','desc')->take(10)->get();
+        $slides =  SlideShow::get();
+        $featured = FeaturedProduct::get();
         $categories = Category::where('publication_status',1)->get();
-        return view('Frontend.indexContent', compact('product','categories'));
+        return view('Frontend.indexContent', compact('slides','categories','featured'));
 
     }
 

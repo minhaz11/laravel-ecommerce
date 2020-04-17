@@ -43,6 +43,12 @@ Route::get('/', "FrontendController@index")->name('index') ;
   Route::get('invoice/details/{id}', 'OrderController@seeInvoice')->name('seeInvoice');
   Route::get('invoice/download/{id}', 'OrderController@downloadInvoice')->name('downloadInvoice');
 
+  //Banner manage
+  Route::get('manage/slider','ManageBannerController@manageSlider')->name('manageSlider');
+  Route::post('manage/slider','ManageBannerController@submittedSlider')->name('submittedSlider');
+  Route::get('manage/featured-products','ManageBannerController@manageFeatured')->name('manageFeatured');
+  Route::post('manage/featured-products','ManageBannerController@submittedFeatured')->name('submittedFeatured');
+
   //---Front End category wised product view----//
   Route::get('/categories/products/view/{id}', 'FrontendController@productList')->name('cat_product');
   Route::get('product/details/{id}', 'FrontendController@productDetails')->name('productDetails');
