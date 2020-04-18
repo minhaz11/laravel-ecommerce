@@ -34,6 +34,13 @@ Route::get('/', "FrontendController@index")->name('index') ;
   Route::get('product/restore/{id}', 'ProductController@restore')->name('restoreProduct');
 
   Route::get('product/force-delete/{id}', 'ProductController@forceDelete')->name('p_deleteProduct');
+  Route::get('products/all', function(){
+        return view('Frontend.allProduct');
+  })->name('allProducts');
+
+  //search
+  Route::post('search/products', 'SearchController@searchProduct')->name('searchProduct');
+
 
   //order manage
   Route::get('order/manage', 'OrderController@index')->name('manageOrder');
@@ -79,6 +86,10 @@ Route::get('/', "FrontendController@index")->name('index') ;
 
     //order
     Route::post('order/saved','CustomerController@saveOrder')->name('saveOrder');
+    Route::get('order/confirmed',function(){
+        return view('Frontend.confirmMsg');
+    })->name('orderConfirmed');
+
 
     //logout customer
     Route::get('/logout/customer', 'CustomerController@logout')->name('logout_customer');

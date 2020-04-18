@@ -14,18 +14,20 @@ Home Page
                 style="background-image: url({{asset('uploads/product_image')}}/{{$item->products->productImage}});">
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
-                        data-appear="fadeInDown" style="color:#ff971d;">
+                        data-appear="fadeInDown" style="color:#ff971d; font-size:30px; font-weight:600">
                         Choose Your Desired Shoes
                     </span>
 
                     <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp"
-                        style="color:#588da8;">
+                        style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.6558998599439776) 50%, rgba(252,176,69,1) 100%); border-radius:10px">
                         With Our New arrivals
                     </h2>
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{route('allProducts')}}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4" style="background-color: #8EC5FC;
+                        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+                        ">
                             Shop Now
                         </a>
                     </div>
@@ -55,7 +57,9 @@ Home Page
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
                         <a href="{{route('cat_product',['id'=> $cat->id])}}"
-                            class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn btn-info" >
+                            class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4" style="background-color: #8EC5FC;
+                            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+                            " >
                             {{$cat->categoryName}}
                         </a>
                     </div>
@@ -87,19 +91,18 @@ Home Page
                     <div class="block2">
                         <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
                             <img src="{{asset('uploads/product_image')}}/{{$item->products->productImage}}"
-                                alt="IMG-PRODUCT" style="width:250px; height:250px">
+                                alt="IMG-PRODUCT" style="height:350px">
 
                             <div class="block2-overlay trans-0-4">
-                                <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                    <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                    <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                </a>
-
                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                     <!-- Button -->
-                                    <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                <form action="{{route('add_to_cart',['id'=>$item->products->id])}}" method="POST">
+                                    @csrf
+                                   <input type="hidden" name="product_quantity" value="1">
+                                   <button type="submit"  class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                         Add to Cart
                                     </button>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -126,11 +129,11 @@ Home Page
 <!-- Banner2 -->
 
 <!-- Blog -->
-<section class="blog bgwhite p-t-92 p-b-65">
+<section class="blog bgwhite p-t-45 p-b-50">
     <div class="container">
         <div class="sec-title p-b-52">
             <h3 class="m-text5 t-center">
-                Our Blog
+                Our Services
             </h3>
         </div>
 
@@ -139,22 +142,17 @@ Home Page
                 <!-- Block3 -->
                 <div class="block3">
                     <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                        <img src="{{asset('Frontend')}}/images/blog-01.jpg" alt="IMG-BLOG">
+                        <img src="{{asset('Frontend/images')}}/del.jpg" alt="IMG-BLOG" style="width:400px;height:220px">
                     </a>
 
                     <div class="block3-txt p-t-14">
                         <h4 class="p-b-7">
                             <a href="blog-detail.html" class="m-text11">
-                                Black Friday Guide: Best Sales & Discount Codes
+                                Fast Delivery
                             </a>
                         </h4>
-
-                        <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                        <span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
-
                         <p class="s-text8 p-t-16">
-                            Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id
-                            euismod. Inter-dum et malesuada fames
+                            We Provide the fastest delivery as possible. Just order and stay be ralaxed. We will knock at your door as soon as possible.
                         </p>
                     </div>
                 </div>
@@ -164,22 +162,17 @@ Home Page
                 <!-- Block3 -->
                 <div class="block3">
                     <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                        <img src="{{asset('Frontend')}}/images/blog-02.jpg" alt="IMG-BLOG">
+                        <img src="{{asset('Frontend')}}/images/money-back.png" alt="IMG-BLOG" style="width:400px;height:220px">
                     </a>
 
                     <div class="block3-txt p-t-14">
                         <h4 class="p-b-7">
                             <a href="blog-detail.html" class="m-text11">
-                                The White Sneakers Nearly Every Fashion Girls Own
+                                30 Day's money back gurranty
                             </a>
                         </h4>
-
-                        <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                        <span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
-
                         <p class="s-text8 p-t-16">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                            You can have confidence in how quickly we will refund your money
                         </p>
                     </div>
                 </div>
@@ -189,22 +182,17 @@ Home Page
                 <!-- Block3 -->
                 <div class="block3">
                     <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                        <img src="{{asset('Frontend')}}/images/blog-03.jpg" alt="IMG-BLOG">
+                        <img src="{{asset('Frontend')}}/images/cs.jpg" alt="IMG-BLOG" style="width:400px;height:220px">
                     </a>
 
                     <div class="block3-txt p-t-14">
                         <h4 class="p-b-7">
                             <a href="blog-detail.html" class="m-text11">
-                                New York SS 2018 Street Style: Annina Mislin
+                                24/7 Customer care service
                             </a>
                         </h4>
-
-                        <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                        <span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
-
                         <p class="s-text8 p-t-16">
-                            Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed
-                            hendrerit ligula porttitor. Fusce sit amet maximus nunc
+                            Our team are always here to help, 24 hours a day, 7 days a week
                         </p>
                     </div>
                 </div>
@@ -345,7 +333,7 @@ Home Page
 </section>
 
 <!-- Shipping -->
-<section class="shipping bgwhite p-t-62 p-b-46">
+{{-- <section class="shipping bgwhite p-t-62 p-b-46">
     <div class="flex-w p-l-15 p-r-15">
         <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
             <h4 class="m-text12 t-center">
@@ -377,7 +365,7 @@ Home Page
             </span>
         </div>
     </div>
-</section>
+</section> --}}
 
 
 

@@ -36,28 +36,6 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('Frontend')}}/css/main.css">
 <!--===============================================================================================-->
 
-<!--sign up customer-->
- {{-- <!-- Icons font CSS-->
- <link href="{{asset('customer')}}/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
- <link href="{{asset('customer')}}/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
- <!-- Font special for pages-->
- <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
- <!-- Vendor CSS-->
- <link href="{{asset('customer')}}/vendor/select2/select2.min.css" rel="stylesheet" media="all">
- <link href="{{asset('customer')}}/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
- <!-- Main CSS-->
- <link href="{{asset('customer')}}/css/main.css" rel="stylesheet" media="all"> --}}
-{{-- <link rel="stylesheet" href="{{asset('customer')}}/fonts/material-icon/css/material-design-iconic-font.min.css">
-
-<!-- Main css -->
-<link rel="stylesheet" href="{{asset('customer')}}/css/style.css"> --}}
-
-{{-- <link href="{{asset('customer')}}/form.css" rel="stylesheet"> --}}
-
-
-
 
 </head>
 <body class="animsition">
@@ -83,13 +61,6 @@
 					<span class="topbar-email">
                         minhaz217@gmail.com
 					</span>
-
-					{{-- <div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
-					</div> --}}
 				</div>
 			</div>
 
@@ -106,35 +77,21 @@
 						<ul class="main_menu">
 							<li>
 								<a href="{{route('index')}}">Home</a>
-								{{-- <ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul> --}}
 							</li>
 
 							<li>
-                                <a href="product.html">Shop</a>
+                                <a href="{{route('allProducts')}}">Shop</a>
 
 							</li>
 
 							<li class="sale-noti">
                                 <a href="">Categories</a>
                                 <ul class="sub_menu">
-									<li><a href="">Homepage V1</a></li>
-									<li><a href="">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
+                                    @foreach ($categories as $cat)
+                                     <li><a href="{{route('cat_product',['id'=> $cat->id])}}">{{$cat->categoryName}}</a></li>
+                                    @endforeach
 								</ul>
 							</li>
-
-							<li>
-								<a href="cart.html">Features</a>
-							</li>
-
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
 							<li>
 								<a href="about.html">About</a>
 							</li>
@@ -323,12 +280,6 @@
 								fashe@example.com
 							</span>
 
-							<div class="topbar-language rs1-select2">
-								<select class="selection-1" name="time">
-									<option>USD</option>
-									<option>EUR</option>
-								</select>
-							</div>
 						</div>
 					</li>
 
@@ -344,30 +295,22 @@
 
 					<li class="item-menu-mobile">
 						<a href="{{route('index')}}">Home</a>
-						<ul class="sub-menu">
-							{{-- <li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li> --}}
+
+					</li>
+
+					<li class="item-menu-mobile">
+                     <a href="{{route('allProducts')}}">Shop</a>
+					</li>
+
+					<li class="item-menu-mobile">
+                        <a>Category</a>
+                        <ul class="sub-menu">
+                            @foreach ($categories as $cat)
+                            <li><a href="{{route('cat_product',['id'=> $cat->id])}}">{{$cat->categoryName}}</a></li>
+                           @endforeach
 						</ul>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
-					</li>
-
 					<li class="item-menu-mobile">
 						<a href="about.html">About</a>
 					</li>
@@ -412,93 +355,58 @@
 				</h4>
 
 				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Men
-						</a>
-					</li>
+                    @foreach ($categories as $cat)
+                    <li class="p-b-9"><a class="s-text7" href="{{route('cat_product',['id'=> $cat->id])}}">{{$cat->categoryName}}</a></li>
+                    @endforeach
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Women
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Dresses
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Sunglasses
-						</a>
-					</li>
 				</ul>
 			</div>
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Links
+					Partners
 				</h4>
 
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Search
+                            Addidas
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							About Us
+                            Rebook
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Contact Us
+							Nike
 						</a>
 					</li>
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Returns
-						</a>
-					</li>
 				</ul>
 			</div>
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Help
+					Payment
 				</h4>
 
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Track Order
+							Paypal
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Returns
+							Cash On Delivery
 						</a>
 					</li>
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Shipping
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							FAQs
-						</a>
-					</li>
 				</ul>
 			</div>
 
@@ -586,20 +494,6 @@
 
     <!---====sign up customer--->
     <script src="{{asset('customer')}}/form.js"></script>
-    <!-- Jquery JS-->
-    {{-- <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="{{asset('customer')}}/vendor/select2/select2.min.js"></script>
-    <script src="{{asset('customer')}}/vendor/datepicker/moment.min.js"></script>
-    <script src="{{asset('customer')}}/vendor/datepicker/daterangepicker.js"></script>
-
-    <!-- Main JS-->
-    <script src="{{asset('customer')}}/js/global.js"></script> --}}
-    {{-- <script src="{{asset('customer')}}/vendor/jquery/jquery.min.js"></script>
-    <script src="{{asset('customer')}}/js/main.js"></script> --}}
-
-
-
 
 </body>
 </html>

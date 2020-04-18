@@ -129,7 +129,7 @@ class CustomerController extends Controller
             return redirect('/payment');
         }
         Cart::clear();
-        return redirect()->route('index');
+        return redirect()->route('orderConfirmed');
     }
 
     public function logout()

@@ -1,7 +1,7 @@
 
 @extends('layouts.frontendLayout')
 @section('title')
-  Category Products
+  All Products
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 
 <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image:url('{{asset('Frontend')}}/images/4.jpg');" >
     <h2 class="l-text2 t-center text-dark">
-        {{$catName->categoryName}}
+        All Products
     </h2>
     <p class="m-text13 t-center">
     </p>
@@ -28,18 +28,14 @@
                     </h4>
 
                     <ul class="p-b-54">
-                        <li class="p-t-4"><a href="{{route('allProducts')}}">All</a></li>
-                        @foreach ($category as $item)
+                        @foreach ($categories as $item)
                         <li class="p-t-4">
                             <a href="{{route('cat_product',['id'=> $item->id])}}" class="s-text13 active1">
                                 {{$item->categoryName}}
                             </a>
                         </li>
                         @endforeach
-
                     </ul>
-
-
                 </div>
             </div>
 
@@ -47,23 +43,23 @@
                 <!--  -->
                 <div class="flex-sb-m flex-w p-b-35">
                     <span class="s-text8 p-t-5 p-b-5">
-                        Showing results of {{$catName->categoryName}} category....
+                        Showing all producs....
                     </span>
-                    <div class="search-product pos-relative bo4 of-hidden">
-                        <form action="{{route('searchProduct')}}" method="POST">
-                            @csrf
-                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+                <div class="search-product pos-relative bo4 of-hidden">
+                    <form action="{{route('searchProduct')}}" method="POST">
+                        @csrf
+                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
 
-                            <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                    </div>
+                        <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
                 </div>
 
                 <!-- Product -->
                 <div class="row">
-                    @foreach ($product as $pd)
+                    @foreach ($products as $pd)
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
                         <div class="block2">
@@ -107,7 +103,7 @@
                 <div class="pagination flex-m flex-w p-t-26">
                     {{-- <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
                     <a href="#" class="item-pagination flex-c-m trans-0-4">2</a> --}}
-                    {{ $product->links() }}
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>

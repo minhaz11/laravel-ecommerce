@@ -40,18 +40,6 @@
                             <img src="{{asset('uploads/product_image')}}/{{$product->productImage}}" alt="IMG-PRODUCT">
                         </div>
                     </div>
-
-                    {{-- <div class="item-slick3" data-thumb="images/thumb-item-02.jpg">
-                        <div class="wrap-pic-w">
-                            <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-                        </div>
-                    </div>
-
-                    <div class="item-slick3" data-thumb="images/thumb-item-03.jpg">
-                        <div class="wrap-pic-w">
-                            <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -133,8 +121,7 @@
             </div>
 
             <div class="p-b-45">
-                <span class="s-text8 m-r-35">SKU: MUG-01</span>
-                <span class="s-text8">Categories: Mug, Design</span>
+                <span class="s-text8">Category: {{ $product->category->categoryName}} </span>
             </div>
 
             <!--  -->

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use view;
 use Cart;
+use view;
+use App\Product;
+use App\Category;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('getTotalQuantity', Cart::getTotalQuantity());
             $view->with('getSubTotal', Cart::getSubTotal());
             $view->with('isEmpty', Cart::isEmpty());
+            $view->with('categories', Category::all());
+            $view->with('products', Product::paginate(20));
+
         });
     }
 }

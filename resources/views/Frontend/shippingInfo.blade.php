@@ -4,13 +4,12 @@
 @endsection
 
 @section('content')
-<div class="page-wrapper  p-t-180 p-b-100 font-poppins">
-<div class="wrapper wrapper--w780">
-    <div class="card card-3">
-        <div class="card-heading"></div>
-        <div class="card-body">
-            <h2 class="title">Shipping Info</h2>
+<link href="{{asset('customer')}}/form.css" rel="stylesheet">
+<div class="container m-auto">
+    <div class="form">
+      <div class="wrapper">
         <form method="POST" action="{{route('storeShippingInfo')}}">
+            <h2 class="title">Shipping Info</h2> <br>
                 @csrf
                 <div class="input-group">
                 <input class="input--style-3" type="text" placeholder="Full Name" name="name" value="{{$customer->name.' '.$customer->last_name}}">
@@ -23,14 +22,11 @@
                     <input class="input--style-3" type="text" placeholder="Phone" name="phone" value="{{$customer->phone}}">
                 </div>
                 <div class="input-group">
-                    <textarea class="input--style-3 form-control"  placeholder="Address" name="Address" cols="50" rows="3">{{$customer->address}}</textarea>
+                    <input class="input--style-3"  placeholder="Address" name="Address" cols="50" rows="3" value="{{$customer->address}}">
                 </div>
-                <div class="p-t-10">
-                    <button class="btn btn--pill btn--green" type="submit">Procced Next</button>
-                </div>
+                    <button class="input--style-3" type="submit">Procced Next</button>
             </form>
-        </div>
+      </div>
     </div>
-</div>
 </div>
 @endsection
